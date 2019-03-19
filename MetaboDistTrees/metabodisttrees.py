@@ -12,7 +12,7 @@ import pandas as pd
 import obonet
 import networkx
 import os
-
+import pkg_resources
 
 # from https://stackoverflow.com/questions/28222179/save-dendrogram-to-newick-format
 def getNewick(node, newick, parentdist, leaf_names):
@@ -58,7 +58,8 @@ def get_classytrees(cf,buckettable, lev,outputdir = "ClassyTree/"):
     cf = cf[cf.CF_kingdom != 'Inorganic compounds']
     cf = cf.rename(columns = {'cluster index':'cluster.index'})
     
-    graph = obonet.read_obo('../data/ChemOnt_2_1.obo')
+    graph_path = pkg_resources.resource_filename('MetaboDistTrees', 'data/ChemOnt_2_1.obo')
+    graph = obonet.read_obo(graph_path)
     
     # Mapping from term ID to name
     id_to_name = {id_: data['name'] for id_, data in graph.nodes(data=True)}
