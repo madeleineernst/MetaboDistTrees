@@ -49,6 +49,8 @@ MolNetEnhancer uses automated chemical classification through ClassyFire: <br>
 Feunang, Y. D.; Eisner, R.; Knox, C.; Chepelev, L.; Hastings, J.; Owen, G.; Fahy, E.; Steinbeck, C.; Subramanian, S.; Bolton, E.; Greiner, R.; Wishart, D.S. ClassyFire: automated chemical classification with a comprehensive, computable taxonomy. J. Cheminform. 2016, 8, 61.
 https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y
 
+Chemically informed distance trees using chemical class information is based on the chemical ontology retrieved from: http://classyfire.wishartlab.com/downloads
+
 ## License
 This repository is available under the following license https://github.com/madeleineernst/MetaboDistTrees/blob/master/LICENSE
 
