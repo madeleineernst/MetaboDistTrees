@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="MetaboDistTrees",
-    version="0.0.7",
+    version="0.0.8",
     author="Madeleine Ernst",
     author_email="mernst@ucsd.edu",
     description="A python implementation for building chemically informed distance trees",
