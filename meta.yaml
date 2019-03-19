@@ -1,0 +1,14 @@
+package:
+  name: metabodisttrees
+  version: 0.0.1
+
+build:
+  number: 3
+
+requirements:
+  run:
+    - python
+about:
+  home: https://github.com/madeleineernst/metabodisttrees
+  license: MIT
+  license_file: LICENSE
