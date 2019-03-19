@@ -50,7 +50,7 @@ def get_motiftrees(motifs, buckettable, method = "ward", metric = "euclidean", o
     f.close()
     
     
-def get_classytrees(cf,buckettable, lev,outputdir = "ClassyTree/"):
+def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', outputdir = "ClassyTree/"):
     
     os.mkdir(outputdir)
      
@@ -102,7 +102,7 @@ def get_classytrees(cf,buckettable, lev,outputdir = "ClassyTree/"):
             df.to_csv(outputdir + 'Classlist_' + lev[i] + '.tsv',sep='\t',index=True)
             
             # do hierarchical cluster analysis on classlist and convert to newick format
-            Z = scipy.cluster.hierarchy.linkage(df, method='average', metric='jaccard')
+            Z = scipy.cluster.hierarchy.linkage(df, method=method, metric=metric)
             
             leaf_names = df.index # remove white space from leaf labels
             tree = hierarchy.to_tree(Z,False)
