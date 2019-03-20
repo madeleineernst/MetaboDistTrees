@@ -73,6 +73,7 @@ def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', out
             all_subclasses = [x for x in all_subclasses  if str(x) != 'nan']
             all_subclasses = [x for x in all_subclasses  if str(x) != 'no matches']
             all_subclasses = [x for x in all_subclasses  if str(x) != ' ']
+            all_subclasses = [x for x in all_subclasses  if str(x) != 'Non-metal phosphonates']
             
             a = []
             for j in all_subclasses:
