@@ -52,7 +52,7 @@ def get_motiftrees(motifs, buckettable, method = "ward", metric = "euclidean", o
     
 def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', outputdir = "ClassyTree/"):
     
-    os.mkdir(outputdir)
+    os.makedirs(outputdir, exist_ok=True)
      
     # remove inorganic compounds by default
     cf = cf[cf.CF_kingdom != 'Inorganic compounds']
@@ -100,7 +100,7 @@ def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', out
             df = df.iloc[:,0].str.get_dummies(sep='#')
             df.index = inames
             
-            df.to_csv(outputdir + 'Classlist_' + lev[i] + '.tsv',sep='\t',index=True)
+            df.to_csv(os.path.join(outputdir, 'Classlist_' + lev[i] + '.tsv'),sep='\t',index=True)
             
             # do hierarchical cluster analysis on classlist and convert to newick format
             Z = scipy.cluster.hierarchy.linkage(df, method=method, metric=metric)
@@ -108,7 +108,7 @@ def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', out
             leaf_names = df.index # remove white space from leaf labels
             tree = hierarchy.to_tree(Z,False)
             
-            f = open(outputdir + 'NewickTree_' + lev[i] + '.txt','w')
+            f = open(os.path.join(outputdir, 'NewickTree_' + lev[i] + '.txt'),'w')
             f.write(getNewick(tree, "", tree.dist, leaf_names))
             f.close()
         
@@ -141,7 +141,7 @@ def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', out
             df.index = [num.replace('[', '.') for num in df.index]
             df.index = [num.replace(']', '.') for num in df.index]
             
-            df.to_csv(outputdir + 'Classlist_' + lev[i] + '.tsv',sep='\t',index=True)
+            df.to_csv(os.path.join(outputdir, 'Classlist_' + lev[i] + '.tsv'),sep='\t',index=True)
             
             # do hierarchical cluster analysis on classlist and convert to newick format
             Z = scipy.cluster.hierarchy.linkage(df, method='average', metric='jaccard')
@@ -149,12 +149,12 @@ def get_classytrees(cf,buckettable, lev, method='average', metric='jaccard', out
             leaf_names = df.index # remove white space from leaf labels
             tree = hierarchy.to_tree(Z,False)
             
-            f = open(outputdir + 'NewickTree_' + lev[i] + '.txt','w')
+            f = open(os.path.join(outputdir, 'NewickTree_' + lev[i] + '.txt'),'w')
             f.write(getNewick(tree, "", tree.dist, leaf_names))
             f.close()
             
     # select only features present in tree
     bt_sel = buckettable[buckettable['#OTU ID'].isin(list(set(buckettable['#OTU ID']) & set(cf['cluster.index'])))]
-    bt_sel.to_csv(outputdir + 'Buckettable_ChemicalClasses.tsv', sep = '\t', index = False)
+    bt_sel.to_csv(os.path.join(outputdir, 'Buckettable_ChemicalClasses.tsv'), sep = '\t', index = False)
 
 
