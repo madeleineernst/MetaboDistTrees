@@ -13,6 +13,13 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/madeleineernst/MetaboDistTrees",
     packages=setuptools.find_packages(),
+    install_requires = [
+    	'scipy',
+    	'numpy',
+    	'pandas',
+    	'obonet',
+    	'networkx'
+    ],
     package_data={
         # If any package contains *.txt files, include them:
         '': ['*.txt'],
