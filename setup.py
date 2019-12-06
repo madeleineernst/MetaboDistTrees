@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="MetaboDistTrees",
-    version="0.0.9",
+    version="0.1.2",
     author="Madeleine Ernst",
     author_email="mernst@ucsd.edu",
     description="A python implementation for building chemically informed distance trees",
@@ -26,6 +26,7 @@ setuptools.setup(
         # And include any *.dat files found in the 'data' subdirectory
         # of the 'mypkg' package, also:
         'MetaboDistTrees': ['data/*.obo'],
+        'MetaboDistTrees': ['test/*.py'],
     },
     classifiers=(
         "Programming Language :: Python :: 3",
